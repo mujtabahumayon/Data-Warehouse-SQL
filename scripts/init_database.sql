@@ -102,8 +102,8 @@ SHOW VARIABLES LIKE 'secure_file_priv';
 SHOW GLOBAL VARIABLES LIKE 'local_infile';
 SHOW VARIABLES LIKE 'local_infile';
 
-
-
+-- CRM: cust_info
+TRUNCATE TABLE bronze_CRM_cust_info;
 LOAD DATA LOCAL INFILE '/Users/mujtabahumayon/Downloads/sql-data-warehouse-project/datasets/source_crm/cust_info.csv'
 INTO TABLE bronze_CRM_cust_info
 FIELDS TERMINATED BY ','
@@ -111,16 +111,68 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE '/Users/mujtabahumayon/Downloads/sql-data-warehouse-project/datasets/source_crm/cust_info.csv' 
-INTO TABLE bronze_CRM_cust_info
-FIELDS TERMINATED BY ',' 
+SELECT * FROM bronze_CRM_cust_info;
+SELECT COUNT(cst_key) FROM bronze_CRM_cust_info;
+
+-- CRM: prd_info
+TRUNCATE TABLE bronze_CRM_prd_info;
+LOAD DATA LOCAL INFILE '/Users/mujtabahumayon/Downloads/sql-data-warehouse-project/datasets/source_crm/prd_info.csv'
+INTO TABLE bronze_CRM_prd_info
+FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
+SELECT * FROM bronze_CRM_prd_info;
+SELECT COUNT(prd_key) FROM bronze_CRM_prd_info;
 
+-- CRM: sales_details
+TRUNCATE TABLE bronze_CRM_sales_details;
+LOAD DATA LOCAL INFILE '/Users/mujtabahumayon/Downloads/sql-data-warehouse-project/datasets/source_crm/sales_details.csv'
+INTO TABLE bronze_CRM_sales_details
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
 
+SELECT * FROM bronze_CRM_sales_details;
+SELECT COUNT(sls_due_dt) FROM bronze_CRM_sales_details;
 
+-- ERP: CUST_AZ12
+TRUNCATE TABLE bronze_ERP_CUST_AZ12;
+LOAD DATA LOCAL INFILE '/Users/mujtabahumayon/Downloads/sql-data-warehouse-project/datasets/source_erp/CUST_AZ12.csv'
+INTO TABLE bronze_ERP_CUST_AZ12
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+SELECT * FROM bronze_ERP_CUST_AZ12;
+SELECT COUNT(CID) FROM bronze_ERP_CUST_AZ12;
+
+-- ERP: LOC_A101
+TRUNCATE TABLE bronze_ERP_CUST_AZ12;
+LOAD DATA LOCAL INFILE '/Users/mujtabahumayon/Downloads/sql-data-warehouse-project/datasets/source_erp/LOC_A101.csv'
+INTO TABLE bronze_ERP_LOC_A101
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+SELECT * FROM bronze_ERP_LOC_A101;
+SELECT COUNT(CID) FROM bronze_ERP_LOC_A101;
+
+-- ERP: PX_CAT_G1V2
+TRUNCATE TABLE bronze_ERP_PX_CAT_G1V2;
+LOAD DATA LOCAL INFILE '/Users/mujtabahumayon/Downloads/sql-data-warehouse-project/datasets/source_erp/PX_CAT_G1V2.csv'
+INTO TABLE bronze_ERP_PX_CAT_G1V2
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+SELECT * FROM bronze_ERP_PX_CAT_G1V2;
+SELECT COUNT(ID) FROM bronze_ERP_PX_CAT_G1V2;
 
 
 -- Silver Layer
