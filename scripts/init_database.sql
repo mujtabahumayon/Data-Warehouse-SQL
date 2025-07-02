@@ -112,7 +112,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
 SELECT * FROM bronze_CRM_cust_info;
-SELECT COUNT(cst_key) FROM bronze_CRM_cust_info;
+SELECT COUNT(*) FROM bronze_CRM_cust_info;
 
 -- CRM: prd_info
 TRUNCATE TABLE bronze_CRM_prd_info;
@@ -124,7 +124,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
 SELECT * FROM bronze_CRM_prd_info;
-SELECT COUNT(prd_key) FROM bronze_CRM_prd_info;
+SELECT COUNT(*) FROM bronze_CRM_prd_info;
 
 -- CRM: sales_details
 TRUNCATE TABLE bronze_CRM_sales_details;
@@ -136,7 +136,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
 SELECT * FROM bronze_CRM_sales_details;
-SELECT COUNT(sls_due_dt) FROM bronze_CRM_sales_details;
+SELECT COUNT(*) FROM bronze_CRM_sales_details;
 
 -- ERP: CUST_AZ12
 TRUNCATE TABLE bronze_ERP_CUST_AZ12;
@@ -148,7 +148,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
 SELECT * FROM bronze_ERP_CUST_AZ12;
-SELECT COUNT(CID) FROM bronze_ERP_CUST_AZ12;
+SELECT COUNT(*) FROM bronze_ERP_CUST_AZ12;
 
 -- ERP: LOC_A101
 TRUNCATE TABLE bronze_ERP_CUST_AZ12;
@@ -160,7 +160,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
 SELECT * FROM bronze_ERP_LOC_A101;
-SELECT COUNT(CID) FROM bronze_ERP_LOC_A101;
+SELECT COUNT(*) FROM bronze_ERP_LOC_A101;
 
 -- ERP: PX_CAT_G1V2
 TRUNCATE TABLE bronze_ERP_PX_CAT_G1V2;
@@ -172,7 +172,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
 SELECT * FROM bronze_ERP_PX_CAT_G1V2;
-SELECT COUNT(ID) FROM bronze_ERP_PX_CAT_G1V2;
+SELECT COUNT(*) FROM bronze_ERP_PX_CAT_G1V2;
 
 
 -- Silver Layer
