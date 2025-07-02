@@ -20,13 +20,110 @@ BEGIN
     DROP DATABASE DataWarehouse;
 END;
 
--- Create the 'DataWarehouse' database
 CREATE DATABASE DataWarehouse;
 
 USE DataWarehouse;
+-- Creating Bronze, Silver & Gold Layer Tables (As MySQL Workbench does not support nested Databases)
 
-CREATE SCHEMA dwh_bronze;
 
+-- Bronze Layer
+
+-- Drop table if it exists
+DROP TABLE IF EXISTS bronze_crm_prd_info;
+-- Create Table
+CREATE TABLE bronze_CRM_cust_info(
+cst_id INT,
+cst_key VARCHAR(50),
+cst_firstname VARCHAR(50),
+cst_lastname VARCHAR(50),
+cst_marital_status VARCHAR(50),
+cst_gndr VARCHAR(50),
+cst_create_date DATE
+);
+
+-- Drop table if it exists
+DROP TABLE IF EXISTS bronze_CRM_prd_info;
+-- Create Table
+CREATE TABLE bronze_CRM_prd_info(
+prd_id INT,
+prd_key	VARCHAR(50),
+prd_nm VARCHAR(50),
+prd_cost INT,
+prd_line VARCHAR(50),
+prd_start_dt DATETIME,
+prd_end_dt DATETIME
+);
+
+-- Drop table if it exists
+DROP TABLE IF EXISTS bronze_CRM_sales_details;
+-- Create Table
+CREATE TABLE bronze_CRM_sales_details(
+sls_ord_num VARCHAR(50),
+sls_prd_key VARCHAR(50),
+sls_cust_id INT,
+sls_order_dt INT,
+sls_ship_dt INT,
+sls_due_dt INT,
+sls_sales INT,
+sls_quantity INT,
+sls_price INT
+);
+
+-- Drop table if it exists
+DROP TABLE IF EXISTS bronze_ERP_CUST_AZ12;
+-- Create Table
+CREATE TABLE bronze_ERP_CUST_AZ12(
+CID VARCHAR(50),
+BDATE DATE,
+GEN VARCHAR(50)
+);
+
+-- Drop table if it exists
+DROP TABLE IF EXISTS bronze_ERP_LOC_A101;
+-- Create Table
+CREATE TABLE bronze_ERP_LOC_A101(
+CID VARCHAR(50),
+CNTRY VARCHAR(50)
+);
+
+-- Drop table if it exists
+DROP TABLE IF EXISTS bronze_ERP_PX_CAT_G1V2;
+-- Create Table
+CREATE TABLE bronze_ERP_PX_CAT_G1V2(
+ID VARCHAR(50),
+CAT VARCHAR(50),
+SUBCAT VARCHAR(50),
+MAINTENANCE VARCHAR(50)
+);
+
+
+-- Inserting/Loading Data
+SHOW VARIABLES LIKE 'secure_file_priv';
+SHOW GLOBAL VARIABLES LIKE 'local_infile';
+SHOW VARIABLES LIKE 'local_infile';
+
+
+
+LOAD DATA LOCAL INFILE '/Users/mujtabahumayon/Downloads/sql-data-warehouse-project/datasets/source_crm/cust_info.csv'
+INTO TABLE bronze_CRM_cust_info
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE '/Users/mujtabahumayon/Downloads/sql-data-warehouse-project/datasets/source_crm/cust_info.csv' 
+INTO TABLE bronze_CRM_cust_info
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+
+
+
+
+-- Silver Layer
 CREATE SCHEMA dwh_silver;
-
+-- Gold Layer
 CREATE SCHEMA dwh_gold;
