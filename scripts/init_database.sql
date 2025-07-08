@@ -14,19 +14,14 @@ WARNING:
 */
 
 -- Drop and recreate the 'DataWarehouse' database
-IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'DataWarehouse')
-BEGIN
-    ALTER DATABASE DataWarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-    DROP DATABASE DataWarehouse;
-END;
 
 CREATE DATABASE DataWarehouse;
 
 USE DataWarehouse;
+
 -- Creating Bronze, Silver & Gold Layer Tables (As MySQL Workbench does not support nested Databases)
 
-
--- Bronze Layer
+-- Bronze Layer --
 
 -- Drop table if it exists
 DROP TABLE IF EXISTS bronze_crm_prd_info;
@@ -95,6 +90,7 @@ CAT VARCHAR(50),
 SUBCAT VARCHAR(50),
 MAINTENANCE VARCHAR(50)
 );
+
 
 
 -- Inserting/Loading Data
@@ -174,8 +170,3 @@ IGNORE 1 ROWS;
 SELECT * FROM bronze_ERP_PX_CAT_G1V2;
 SELECT COUNT(*) FROM bronze_ERP_PX_CAT_G1V2;
 
-
--- Silver Layer
-CREATE SCHEMA dwh_silver;
--- Gold Layer
-CREATE SCHEMA dwh_gold;
