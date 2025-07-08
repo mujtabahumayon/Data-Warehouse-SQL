@@ -1,4 +1,4 @@
-- Bronze Layer --
+-- Bronze Layer --
 
 -- Drop table if it exists
 DROP TABLE IF EXISTS bronze_crm_prd_info;
