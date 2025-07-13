@@ -83,14 +83,13 @@ data-warehouse-project/
 |   |  ├── DDL_silver_layer.sql
 |   |  ├── silver_layer_loadingdata.sql
 │   ├── gold/
-|   |  ├──ddl_gold.sql
+|   |  ├── ddl_gold.sql
 |   ├── Full_DataWarehouse_datapipeline.sql
 |   ├── init_database.sqp
 ├── tests/                      # Data quality checks and validation queries
 |   ├── silver_layer_quality_checls.sql
 ├── README.md                   # Project overview and instructions
 ├── LICENSE                     # Open-source license
-├── .gitignore                  # Ignored files and folders
 ```
 
 
