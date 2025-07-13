@@ -64,19 +64,33 @@ This project involves:
 ```bash
 data-warehouse-project/
 ├── datasets/                   # Raw ERP and CRM datasets
+│   ├── CUST AZ12.csv
+│   ├── LOC_A101.csv
+│   ├── PX_CAT_G1V2.csv
+│   ├── cust_info.csv
+│   ├── prd_info.csv
+│   ├── sales_details.csv
 ├── docs/                       # Project diagrams and metadata
-│   ├── etl.drawio
-│   ├── data_architecture.drawio
-│   ├── data_catalog.md
-│   ├── data_flow.drawio
+│   ├── Data Flow Diagram.png
+│   ├── Data Mart - Star Schema.png
+│   ├── Data Warehouse.png
+│   ├── Integration Model - How Tables are Related.png
 │   ├── data_models.drawio
-│   ├── naming-conventions.md
 ├── scripts/                    # SQL scripts for each data layer
 │   ├── bronze/
+│   |  ├── ddl_bronze_layer.sql
 │   ├── silver/
+|   |  ├── DDL_silver_layer.sql
+|   |  ├── silver_layer_loadingdata.sql
 │   ├── gold/
+|   |  ├──ddl_gold.sql
+|   ├── Full_DataWarehouse_datapipeline.sql
+|   ├── init_database.sqp
 ├── tests/                      # Data quality checks and validation queries
+|   ├── silver_layer_quality_checls.sql
 ├── README.md                   # Project overview and instructions
 ├── LICENSE                     # Open-source license
 ├── .gitignore                  # Ignored files and folders
-└── requirements.txt            # Dependencies and tools
+```
+
+
